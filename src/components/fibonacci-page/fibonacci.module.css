@@ -1,0 +1,21 @@
+.input {
+  max-width: 377px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 120px;
+}
+
+.ul {
+  max-width: 944px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 48px;
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+}
