@@ -4,7 +4,8 @@ import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import styles from "./string.module.css";
-import { ILetter, getSteps } from "./utils";
+import { getSteps } from "./utils";
+import { ILetter } from "../../types/letter";
 import { DELAY_IN_MS } from "../../constants/delays";
 
 export const StringComponent: React.FC = () => {

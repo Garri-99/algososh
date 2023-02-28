@@ -1,13 +1,6 @@
 import { ElementStates } from "../../types/element-states";
-
-export interface ILetter {
-  value: string;
-  state: ElementStates;
-}
-
-function swap<T>(arr: T[], i1: number, i2: number): void {
-  [arr[i1], arr[i2]] = [arr[i2], arr[i1]]
-}
+import { swap } from "../../utils";
+import { ILetter } from "../../types/letter";
 
 export function getSteps(str: string): ILetter[][] {
   const arr: ILetter[] = str.split("").map((i) => ({
