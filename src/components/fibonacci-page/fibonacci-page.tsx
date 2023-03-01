@@ -4,7 +4,7 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
 import styles from "./fibonacci.module.css";
-import { getSteps } from "./utils";
+import { getFibonacciNumbers } from "./utils";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 
 export const FibonacciPage: React.FC = () => {
@@ -20,9 +20,10 @@ export const FibonacciPage: React.FC = () => {
       setIsLoading(false);
       return;
     }
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setCurrStep(currStep + 1);
     }, SHORT_DELAY_IN_MS);
+    return () => clearTimeout(timerId);
   }, [currStep, steps]);
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
@@ -31,7 +32,7 @@ export const FibonacciPage: React.FC = () => {
         onSubmit={(e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           setIsLoading(true);
-          setSteps(getSteps(+str));
+          setSteps(getFibonacciNumbers(+str));
           setCurrStep(0);
         }}
       >

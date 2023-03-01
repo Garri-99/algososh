@@ -24,9 +24,10 @@ export const SortingPage: React.FC = () => {
       setDirection(null);
       return;
     }
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setCurrStep(currStep + 1);
     }, SHORT_DELAY_IN_MS);
+    return () => clearTimeout(timerId)
   }, [currStep, steps]);
 
   return (

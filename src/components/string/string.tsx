@@ -19,9 +19,10 @@ export const StringComponent: React.FC = () => {
       setIsLoading(false);
       return;
     }
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       setCurrStep(currStep + 1);
     }, DELAY_IN_MS);
+    return () => clearTimeout(timerId)
   }, [currStep, steps]);
 
   return (
