@@ -27,7 +27,7 @@ export const SortingPage: React.FC = () => {
     const timerId = setTimeout(() => {
       setCurrStep(currStep + 1);
     }, SHORT_DELAY_IN_MS);
-    return () => clearTimeout(timerId)
+    return () => clearTimeout(timerId);
   }, [currStep, steps]);
 
   return (
@@ -80,7 +80,7 @@ export const SortingPage: React.FC = () => {
         />
         <Button
           onClick={() => {
-            setCurrStep(null)
+            setCurrStep(null);
             setArr(randomArr());
           }}
           text="Новый массив"
@@ -89,17 +89,11 @@ export const SortingPage: React.FC = () => {
         />
       </form>
       <ul className={styles.ul}>
-        {currStep !== null
-          ? steps[currStep].map((item, index) => (
-              <li key={index}>
-                <Column index={item.value} state={item.state} />
-              </li>
-            ))
-          : arr.map((item, index) => (
-              <li key={index}>
-                <Column index={item.value} state={item.state} />
-              </li>
-            ))}
+        {(currStep !== null ? steps[currStep] : arr).map((item, index) => (
+          <li key={index}>
+            <Column index={item.value} state={item.state} />
+          </li>
+        ))}
       </ul>
     </SolutionLayout>
   );

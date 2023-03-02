@@ -59,7 +59,7 @@ export const StackPage: React.FC = () => {
           text="Добавить"
           type="submit"
           isLoader={looaderPos === "push"}
-          disabled={str ? false : true || isLoading}
+          disabled={!str|| isLoading}
           extraClass="mr-6 ml-6"
           onClick={() => {
             setLoaderPos("push");
