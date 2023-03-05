@@ -51,7 +51,7 @@ export const FibonacciPage: React.FC = () => {
           text="Рассчитать"
           type="submit"
           isLoader={isLoading}
-          disabled={!str || +str > 19 || +str < 0 ? true : false}
+          disabled={!str || +str > 19 || (+str < 0 ? true : false)}
         />
       </form>
       <ul className={styles.ul} style={{ justifyContent }}>
