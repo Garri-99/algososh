@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent, useEffect, useMemo } from "react";
+import React, { useState, ChangeEvent, useEffect, useMemo } from "react";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
@@ -32,17 +32,10 @@ export const StackPage: React.FC = () => {
     <SolutionLayout title="Стек">
       <form
         className={styles.form}
-        onSubmit={(e: FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          setIsLoading(true);
-          setSteps(getSteps(stack, str, looaderPos));
-          setCurrStep(0);
-          setStr("");
-        }}
         onReset={() => {
           setCurrStep(null);
           setSteps([]);
-          stack.clear()
+          stack.clear();
         }}
       >
         <Input
@@ -57,19 +50,25 @@ export const StackPage: React.FC = () => {
         />
         <Button
           text="Добавить"
-          type="submit"
           isLoader={looaderPos === "push"}
-          disabled={!str|| isLoading}
+          disabled={!str || isLoading}
           extraClass="mr-6 ml-6"
           onClick={() => {
             setLoaderPos("push");
+            setIsLoading(true);
+            setSteps(getSteps(stack, str, "push"));
+            setCurrStep(0);
+            setStr("");
           }}
         />
         <Button
           text="Удалить"
-          type="submit"
           onClick={() => {
             setLoaderPos("pop");
+            setIsLoading(true);
+            setSteps(getSteps(stack, str, "pop"));
+            setCurrStep(0);
+            setStr("");
           }}
           isLoader={looaderPos === "pop"}
           disabled={isLoading || stack.getSize() === 0}

@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useMemo,
-} from "react";
+import React, { useState, ChangeEvent, useEffect, useMemo } from "react";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { Input } from "../ui/input/input";
@@ -53,12 +47,6 @@ export const QueuePage: React.FC = () => {
     <SolutionLayout title="Очередь">
       <form
         className={styles.form}
-        onSubmit={(e: FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          setIsLoading(true);
-          setSteps(getSteps(queue, visibleElements, str, looaderPos));
-          setCurrStep(0);
-        }}
         onReset={() => {
           clearElemets(!toggle);
           setCurrStep(null);
@@ -78,19 +66,23 @@ export const QueuePage: React.FC = () => {
         />
         <Button
           text="Добавить"
-          type="submit"
           isLoader={looaderPos === "enqueue"}
           disabled={!str || isLoading || queue.getLength() === queue.getSize()}
           extraClass="mr-6 ml-6"
           onClick={() => {
             setLoaderPos("enqueue");
+            setIsLoading(true);
+            setSteps(getSteps(queue, visibleElements, str, "enqueue"));
+            setCurrStep(0);
           }}
         />
         <Button
           text="Удалить"
-          type="submit"
           onClick={() => {
             setLoaderPos("dequeue");
+            setIsLoading(true);
+            setSteps(getSteps(queue, visibleElements, str, "dequeue"));
+            setCurrStep(0);
           }}
           isLoader={looaderPos === "dequeue"}
           disabled={isLoading || queue.getLength() === 0}

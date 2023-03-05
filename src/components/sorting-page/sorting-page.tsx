@@ -1,4 +1,4 @@
-import React, { useState, FormEvent, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "../ui/button/button";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import styles from "./sorting.module.css";
@@ -32,15 +32,7 @@ export const SortingPage: React.FC = () => {
 
   return (
     <SolutionLayout title="Сортировка массива">
-      <form
-        className={styles.form}
-        onSubmit={(e: FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
-          setIsLoading(true);
-          setSteps(getSteps(arr, selectedMethod, direction));
-          setCurrStep(0);
-        }}
-      >
+      <form className={styles.form}>
         <RadioInput
           label="Выбор"
           name="sortingMethod"
@@ -58,24 +50,28 @@ export const SortingPage: React.FC = () => {
         />
         <Button
           text="По возрастанию"
-          type="submit"
           sorting={Direction.Ascending}
           isLoader={direction === Direction.Ascending}
           disabled={isLoading}
           extraClass={styles.asc}
           onClick={() => {
             setDirection(Direction.Ascending);
+            setIsLoading(true);
+            setSteps(getSteps(arr, selectedMethod, Direction.Ascending));
+            setCurrStep(0);
           }}
         />
         <Button
           text="По убыванию"
-          type="submit"
           sorting={Direction.Descending}
           extraClass={`${styles.btn} ml-6 mr-35`}
           isLoader={direction === Direction.Descending}
           disabled={isLoading}
           onClick={() => {
             setDirection(Direction.Descending);
+            setIsLoading(true);
+            setSteps(getSteps(arr, selectedMethod, Direction.Descending));
+            setCurrStep(0);
           }}
         />
         <Button

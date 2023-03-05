@@ -36,7 +36,7 @@ export class Stack<T> implements IStack<T> {
 export function getSteps(
   stack: Stack<ILetter>,
   str: string,
-  action: "push" | "pop" | null
+  action: "push" | "pop"
 ): ILetter[][] {
   const steps: ILetter[][] = [];
   if (action === "push") {

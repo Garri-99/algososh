@@ -20,7 +20,7 @@ export const randomArr = (): ILetter<number>[] => {
 export const getSteps = (
   arr: ILetter<number>[],
   method: SortingMethod,
-  direction?: Direction | null
+  direction: Direction
 ) => {
   const copy = [...arr];
   const steps = [];

@@ -87,7 +87,7 @@ export const getSteps = (
   queue: Queue<string>,
   elements: IElements[],
   str: string,
-  action: "enqueue" | "dequeue" | null
+  action: "enqueue" | "dequeue"
 ): IElements[][] => {
   const steps: IElements[][] = [];
   const { getTailIndex, getLength, getHeadIndex, getSize } = queue;
