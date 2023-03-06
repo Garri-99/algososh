@@ -1,0 +1,28 @@
+.input {
+  max-width: 377px;
+}
+
+.form {
+  max-width: 980px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto 48px;
+}
+
+.btn {
+  width: 205px;
+}
+
+.asc {
+  width: 209px;
+}
+
+.ul {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
