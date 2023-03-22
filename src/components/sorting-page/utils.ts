@@ -23,7 +23,18 @@ export const getSteps = (
   direction: Direction
 ) => {
   const copy = [...arr];
-  const steps = [];
+  const steps: ILetter<number>[][] = [];
+  if (copy.length === 0) {
+    return steps
+  }
+  if (copy.length === 1) {
+    steps.push([...copy]);
+    copy[0] = { ...copy[0], state: ElementStates.Changing }
+    steps.push([...copy]);
+    copy[0] = { ...copy[0], state: ElementStates.Modified }
+    steps.push([...copy]);
+    return steps
+  }
   const { length } = copy;
   if (method === SortingMethod.Selection) {
     for (let i = 0; i < length - 1; i++) {
